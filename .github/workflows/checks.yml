@@ -1,0 +1,15 @@
+# Checks that need neither Roboception's SDK nor a GPU. Building the node and its test needs Durchblick's C++
+# package (built with the CUDA toolkit) and rc_genicam_api: see docs/build.md.
+name: checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  references:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reference check (tools/check_references.sh)
+        run: tools/check_references.sh

@@ -1,0 +1,22 @@
+durchblick-roboception
+Copyright 2026 David Schneider
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party software that this repository does not contain
+----------------------------------------------------------
+
+The build links Roboception's GenICam SDK rc_genicam_api, which you install
+separately (https://github.com/roboception/rc_genicam_api). According to the
+SDK's LICENSE.md (checked with version 2.8.9):
+
+- The files in its directories rc_genicam_api and tools are provided by
+  Roboception GmbH under the 3-clause BSD licence.
+- Its directory genicam contains the GenICam reference implementation of the
+  EMVA and contributors, under the licences in genicam/License_ReadMe.txt and
+  genicam/licenses/ (the GenICam licence and those of third-party packages).
+- Its directory baumer contains a GenTL producer for GigE Vision from Baumer
+  Optronic GmbH, under Baumer's licence agreement in baumer/license.txt.
+
+A binary distribution of this node that includes the SDK's libraries must
+carry those licence texts.

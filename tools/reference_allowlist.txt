@@ -1,0 +1,1 @@
+# Hits of tools/check_references.sh that may stay, one per line: <path>:<extended regex that matches the line>.
