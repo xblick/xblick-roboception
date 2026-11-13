@@ -22,15 +22,15 @@
 #include <rc_genicam_api/image.h>
 #include <rc_genicam_api/pixel_formats.h>
 
-#include "durchblick/camera.hpp"
-#include "durchblick/points.hpp"
+#include "xblick/camera.hpp"
+#include "xblick/points.hpp"
 #include "controls.hpp"
 #include "node.hpp"
 #include "stereo.hpp"
 
 using namespace std::chrono_literals;
-using namespace durchblick;
-using namespace durchblick::rc_node;
+using namespace xblick;
+using namespace xblick::rc_node;
 
 namespace
 {

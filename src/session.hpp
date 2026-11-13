@@ -6,9 +6,9 @@
 #include <string>
 #include <vector>
 
-#include "durchblick/camera.hpp"
+#include "xblick/camera.hpp"
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     inline std::vector<std::string> split_endpoints(const std::string& list)
     {
@@ -34,4 +34,4 @@ namespace durchblick::rc_node
         options.config_file = config_file;
         return options;
     }
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node

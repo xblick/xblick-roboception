@@ -13,7 +13,7 @@
 
 #include <Base/GCException.h>
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     namespace
     {
@@ -378,4 +378,4 @@ namespace durchblick::rc_node
             return lines;
         });
     }
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node

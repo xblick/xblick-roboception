@@ -1,7 +1,7 @@
-# durchblick-roboception
+# xblick-roboception
 
-`durchblick-roboception` publishes the rectified left and right images of a Roboception rc_visard stereo camera as
-[Durchblick](https://github.com/xblick/durchblick) streams, at 25 frames per second by default. It
+`xblick-roboception` publishes the rectified left and right images of a Roboception rc_visard stereo camera as
+[Durchblick](https://github.com/xblick/xblick) streams, at 25 frames per second by default. It
 also publishes a depth image, which it computes from the disparity image of the camera.
 
 The node produces each representation of a stream only while a subscriber asks for it.
@@ -26,23 +26,23 @@ models and the stamps.
 
 | Need | For |
 | --- | --- |
-| Durchblick 0.4, C++ package | everything |
+| Durchblick 0.5, C++ package | everything |
 | The CUDA toolkit that Durchblick's package was built with | Durchblick's CMake package |
 | Roboception's `rc_genicam_api` 2.6 or newer (tested: 2.8.9) | the camera |
 | `GENICAM_GENTL64_PATH` set to the SDK's GenTL producer | finding a device |
 | A PTP master on the network, or `--sync-clock` | stamps on the host's clock |
 
 Every program connects to the Zenoh router of its PC (`zenohd` on port 7447). Durchblick's
-[sessions page](https://github.com/xblick/durchblick/blob/main/docs/concepts/sessions.md) explains the routers.
+[sessions page](https://github.com/xblick/xblick/blob/main/docs/concepts/sessions.md) explains the routers.
 
 ## Install
 
 ```bash
-cmake -S . -B build -G Ninja -DCMAKE_PREFIX_PATH="<durchblick>;<zenoh>" \
+cmake -S . -B build -G Ninja -DCMAKE_PREFIX_PATH="<xblick>;<zenoh>" \
   -DRC_GENICAM_API_DIR=<SDK>/lib/rc_genicam_api -DCUDAToolkit_ROOT=<CUDA toolkit>
 cmake --build build
 ctest --test-dir build --output-on-failure
-cmake --install build --prefix <durchblick_rc>
+cmake --install build --prefix <xblick_rc>
 ```
 
 Replace each `<...>` with the install prefix of that package. The test needs no camera.
@@ -53,17 +53,17 @@ Replace each `<...>` with the install prefix of that package. The test needs no 
 List the devices that the SDK sees, then start the node with one of them.
 
 ```bash
-durchblick-roboception --list
-durchblick-roboception --device <device id>
+xblick-roboception --list
+xblick-roboception --device <device id>
 ```
 
 Other programs read the streams of the node.
 
 ```bash
 # coloured point clouds on robot/rc_visard/points, with Durchblick's point cloud node
-durchblick-points --depth robot/rc_visard/depth --color robot/rc_visard/left
+xblick-points --depth robot/rc_visard/depth --color robot/rc_visard/left
 # a viewer on another host
-blick rerun robot/rc_visard/left robot/rc_visard/right robot/rc_visard/depth \
+xblick rerun robot/rc_visard/left robot/rc_visard/right robot/rc_visard/depth \
   --points robot/rc_visard/points --spawn --connect <camera host>
 ```
 
@@ -79,7 +79,7 @@ Most users change these options:
 | `--cuda-device N` | none | Also offer CUDA rings on this GPU. |
 
 `--help` lists every option, and the program stops at an unknown option. Every option is also a parameter of the
-node `<base>`, which Durchblick's terminal interface (`blick`, tab Parameters) shows; `--param NAME:=VALUE` or
+node `<base>`, which Durchblick's terminal interface (`xblick`, tab Parameters) shows; `--param NAME:=VALUE` or
 `--params-file FILE` set them at the start. Exposure, gain and white balance change while the node runs, within the
 camera's ranges. The others apply at the next start. [docs/options.md](docs/options.md) lists every option and
 parameter.
@@ -104,8 +104,8 @@ parameter.
 | [docs/hardware-checks.md](docs/hardware-checks.md) | The checks that need a camera. |
 
 Durchblick's concept pages explain the terms that these pages use:
-[streams and topics](https://github.com/xblick/durchblick/blob/main/docs/concepts/streams-and-topics.md), [transports](https://github.com/xblick/durchblick/blob/main/docs/concepts/transports.md),
-[rings](https://github.com/xblick/durchblick/blob/main/docs/concepts/rings.md) and [timestamps](https://github.com/xblick/durchblick/blob/main/docs/concepts/timestamps.md).
+[streams and topics](https://github.com/xblick/xblick/blob/main/docs/concepts/streams-and-topics.md), [transports](https://github.com/xblick/xblick/blob/main/docs/concepts/transports.md),
+[rings](https://github.com/xblick/xblick/blob/main/docs/concepts/rings.md) and [timestamps](https://github.com/xblick/xblick/blob/main/docs/concepts/timestamps.md).
 
 ## Licence and credits
 

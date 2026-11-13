@@ -9,7 +9,7 @@ depth qualities with their rates, and the restart of the stream.
 
 ## 1. PTP: does the camera's clock follow the host's clock?
 
-**Run.** Start the node with PTP on, which is the default. `blick diagnostics` shows the image age, which
+**Run.** Start the node with PTP on, which is the default. `xblick diagnostics` shows the image age, which
 is the current time minus the stamp. Check on the host whether a PTP master is active. It can be `ptp4l` with
 `phc2sys`, or a network switch. Check whether the web GUI of the rc_visard shows the PTP state "slave" with an
 offset.
@@ -23,7 +23,7 @@ offset and decide. Never compare the stamps with other clocks until the age is p
 ## 2. What the stamp marks
 
 **Run.** Do the screen-clock test with the left camera. It is check 1 in the `docs/hardware-checks.md` of
-durchblick-azure-kinect.
+xblick-azure-kinect.
 
 **Expect.** Roboception documents the timestamp as the time of the exposure. The stamp minus the shown time is half
 the exposure plus the delay of the monitor, within one refresh period.

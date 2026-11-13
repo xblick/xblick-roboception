@@ -1,18 +1,18 @@
-// durchblick-roboception: a Roboception rc_visard as Durchblick streams (node.hpp).
+// xblick-roboception: a Roboception rc_visard as Durchblick streams (node.hpp).
 //
-//   durchblick-roboception --device <id> [--base robot/rc_visard] [--fps 25]
+//   xblick-roboception --device <id> [--base robot/rc_visard] [--fps 25]
 //                          [--mono] [--no-right] [--no-depth] [--depth-quality Low|Medium|High|Full]
 //                          [--auto-exposure | --exposure-ms 12] [--gain-db 0]
 //                          [--auto-white-balance | --white-balance 1.2 2.4] [--no-ptp] [--sync-clock]
 //                          [--left-frame-id Roboception_LeftCamera] [--right-frame-id Roboception_RightCamera]
 //                          [--cuda-device 0] [--source robot] [--status-period 5]
-//   durchblick-roboception --list   (the devices the SDK sees)
+//   xblick-roboception --list   (the devices the SDK sees)
 //
 // Zenoh: the PC's router (127.0.0.1:7447), or --listen/--connect ENDPOINT..., or --zenoh-config FILE
-// (durchblick::open_session). Every option is also a parameter of the node /<base> (durchblick/options.hpp; --param and
+// (xblick::open_session). Every option is also a parameter of the node /<base> (xblick/options.hpp; --param and
 // --params-file set them at the start): read-only, but exposure, gain and white balance, which change while the camera
 // streams (controls.hpp: exposure_ms, gain_db, auto_exposure, white_balance_red, white_balance_blue,
-// auto_white_balance, each in the camera's range; `blick`, tab Parameters, or `blick param`). The defaults:
+// auto_white_balance, each in the camera's range; `xblick`, tab Parameters, or `xblick param`). The defaults:
 // exposure 12 ms, white balance red 1.2, blue 2.4, colour, depth quality High, left, right and depth together. The
 // SDK finds its GenTL producer through GENICAM_GENTL64_PATH. --sync-clock puts the stamps on the host's wall clock
 // without a PTP master: the offset to the camera's clock is measured with TimestampLatch at the start and every second.
@@ -22,9 +22,9 @@
 #include <cstdio>
 #include <iostream>
 
-#include "durchblick/camera.hpp"
-#include "durchblick/options.hpp"
-#include "durchblick/parameters.hpp"
+#include "xblick/camera.hpp"
+#include "xblick/options.hpp"
+#include "xblick/parameters.hpp"
 #include "controls.hpp"
 #include "node.hpp"
 #include "session.hpp"
@@ -37,13 +37,13 @@ namespace
 
 int main(int argc, char** argv)
 {
-    using namespace durchblick;
-    using namespace durchblick::rc_node;
+    using namespace xblick;
+    using namespace xblick::rc_node;
     std::signal(SIGINT, [](int) { stop = true; });
     std::signal(SIGTERM, [](int) { stop = true; });
     const DeviceOptions device_defaults;
     const NodeOptions node_defaults;
-    Options options("durchblick-roboception", "a Roboception rc_visard as Durchblick streams");
+    Options options("xblick-roboception", "a Roboception rc_visard as Durchblick streams");
     options.add_flag("list", {.help = "list the devices the SDK sees, and end"});
     options.add("device", "", {.help = "the GenICam device ID, serial number or name (--list shows them)"});
     options.add("base", node_defaults.base, {.help = "the streams' base <namespace>/<camera>; the node /<base>"});
@@ -158,7 +158,7 @@ int main(int argc, char** argv)
         parameters.check_overrides();
         parameters.apply_all();  // the start's values (--param ones included) on the camera
         Node publisher(session, n, source->stereo());
-        std::cout << "durchblick-roboception: " << d.device_id << " -> " << n.base << "/{left,right,depth,tf_static,"
+        std::cout << "xblick-roboception: " << d.device_id << " -> " << n.base << "/{left,right,depth,tf_static,"
                   << "diagnostics}" << std::endl;
         std::cout << "ready" << std::endl;
         auto last = std::chrono::steady_clock::now();
@@ -195,7 +195,7 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& e)
     {
-        std::cerr << "durchblick-roboception: " << e.what() << std::endl;
+        std::cerr << "xblick-roboception: " << e.what() << std::endl;
         return 1;
     }
     return 0;

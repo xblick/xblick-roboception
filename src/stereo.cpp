@@ -6,7 +6,7 @@
 #include <rc_genicam_api/image.h>
 #include <rc_genicam_api/pixel_formats.h>
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     std::size_t row_bytes(std::uint64_t pixel_format, std::uint32_t width, std::uint32_t xpadding)
     {
@@ -49,16 +49,16 @@ namespace durchblick::rc_node
         return half;
     }
 
-    durchblick::CameraInfo camera_info(const StereoParameters& stereo, std::uint32_t width, std::uint32_t height,
-                                       const std::string& frame_id, bool right)
+    xblick::CameraInfo camera_info(const StereoParameters& stereo, std::uint32_t width, std::uint32_t height,
+                                   const std::string& frame_id, bool right)
     {
         if (not(stereo.focal_length_factor > 0.0) or not(stereo.baseline > 0.0))
         {
             throw std::invalid_argument("FocalLengthFactor and Baseline must be positive");
         }
         const double f = stereo.focal_length_factor * width;
-        durchblick::CameraInfo info =
-            durchblick::CameraInfo::pinhole(width, height, f, f, (width - 1) / 2.0, (height - 1) / 2.0, frame_id);
+        xblick::CameraInfo info =
+            xblick::CameraInfo::pinhole(width, height, f, f, (width - 1) / 2.0, (height - 1) / 2.0, frame_id);
         if (right)
         {
             info.p[3] = -f * stereo.baseline;
@@ -121,4 +121,4 @@ namespace durchblick::rc_node
                                         " x " + std::to_string(image.height) + ")");
         }
     }
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node

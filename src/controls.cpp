@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <iostream>
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     namespace
     {
@@ -80,4 +80,4 @@ namespace durchblick::rc_node
         return slash == std::string::npos ? std::pair{base, std::string()}
                                           : std::pair{base.substr(slash + 1), base.substr(0, slash)};
     }
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node

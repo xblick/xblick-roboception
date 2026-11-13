@@ -1,4 +1,4 @@
-# Streams of durchblick-roboception
+# Streams of xblick-roboception
 
 This page describes the streams of the node, their camera models and their stamps. The README has the short table.
 
@@ -52,7 +52,7 @@ the model `plumb_bob` and zeros as coefficients.
 The principal point is where the SDK's own point cloud puts it. `rcg::storePointCloud` computes
 x = (i + 0.5 - 0.5 w) t / d.
 
-Nodes that read a stereo pair, such as durchblick-fast-foundationstereo, read the baseline from P[3] of the right
+Nodes that read a stereo pair, such as xblick-fast-foundationstereo, read the baseline from P[3] of the right
 camera.
 
 ## Stamps
@@ -80,12 +80,12 @@ buffer.
 
 ## Point clouds
 
-This node computes no point clouds. Durchblick's point cloud node `durchblick-points` reads `depth` and takes the
+This node computes no point clouds. Durchblick's point cloud node `xblick-points` reads `depth` and takes the
 colour from `left`.
 
 ```bash
-durchblick-points --depth robot/rc_visard/depth --color robot/rc_visard/left
+xblick-points --depth robot/rc_visard/depth --color robot/rc_visard/left
 ```
 
 The cloud is a `sensor_msgs/PointCloud2` in metres, organized like the depth image. Durchblick's
-[point cloud guide](https://github.com/xblick/durchblick/blob/main/docs/guides/point-clouds.md) describes that node.
+[point cloud guide](https://github.com/xblick/xblick/blob/main/docs/guides/point-clouds.md) describes that node.

@@ -1,12 +1,12 @@
-# Design of durchblick-roboception
+# Design of xblick-roboception
 
 This page explains how the node works inside, which decisions we made and which special cases of Roboception's SDK
 the code handles.
 
 ## Structure
 
-The project is a plain CMake project with the program `durchblick-roboception` and the library `durchblick_rc`.
-Other programs can build on the installed CMake package `durchblick_rc`. durchblick-azure-kinect has the same
+The project is a plain CMake project with the program `xblick-roboception` and the library `xblick_rc`.
+Other programs can build on the installed CMake package `xblick_rc`. xblick-azure-kinect has the same
 structure.
 
 | Part | Files | Work |

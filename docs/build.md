@@ -1,4 +1,4 @@
-# Build and test durchblick-roboception
+# Build and test xblick-roboception
 
 This page lists the dependencies, the build commands and what the test checks.
 
@@ -6,7 +6,7 @@ This page lists the dependencies, the build commands and what the test checks.
 
 | Dependency | Version | Note |
 | --- | --- | --- |
-| Durchblick's C++ package | 0.4 (`find_package(durchblick 0.4)`) | Its CMake package needs the CUDA toolkit that it was built with. |
+| Durchblick's C++ package | 0.5 (`find_package(xblick 0.5)`) | Its CMake package needs the CUDA toolkit that it was built with. |
 | Roboception's `rc_genicam_api` | 2.6 or newer, tested with 2.8.9 | Set `RC_GENICAM_API_DIR` to `<SDK>/lib/rc_genicam_api`. |
 | zenoh-c and zenoh-cpp | as Durchblick | |
 
@@ -15,17 +15,17 @@ The SDK builds with the system's g++ 14. We tested this with version 2.8.9.
 ## Build
 
 ```bash
-cmake -S . -B build -G Ninja -DCMAKE_PREFIX_PATH="<durchblick>;<zenoh>" \
+cmake -S . -B build -G Ninja -DCMAKE_PREFIX_PATH="<xblick>;<zenoh>" \
   -DRC_GENICAM_API_DIR=<SDK>/lib/rc_genicam_api -DCUDAToolkit_ROOT=<CUDA toolkit>
 cmake --build build
 ctest --test-dir build --output-on-failure
-cmake --install build --prefix <durchblick_rc>
+cmake --install build --prefix <xblick_rc>
 ```
 
 Build in a directory on a local disk. Do not build on a shared filesystem.
 
-The install provides the CMake package `durchblick_rc` for programs that build on the node. They find it through
-`durchblick_rc_DIR`.
+The install provides the CMake package `xblick_rc` for programs that build on the node. They find it through
+`xblick_rc_DIR`.
 
 The programs get the SDK's library directory as `DT_RPATH`. They therefore find the SDK's GenICam libraries without
 `LD_LIBRARY_PATH`.
@@ -48,5 +48,5 @@ The point cloud check compares with the formulas of `rcg::storePointCloud`. The 
 rounding of the depth to millimetres. The check takes place only when Durchblick has its point cloud node, and it
 needs a GPU.
 
-We also started `durchblick-roboception --list` without a camera. The SDK sees no device, and the node stops with
+We also started `xblick-roboception --list` without a camera. The SDK sees no device, and the node stops with
 "device ... not found".

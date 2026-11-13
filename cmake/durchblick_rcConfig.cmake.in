@@ -1,9 +1,0 @@
-# durchblick_rc: the library of durchblick-roboception (CMakeLists.txt). Target durchblick_rc::durchblick_rc (the
-# node, its sources and conversions).
-@PACKAGE_INIT@
-
-include(CMakeFindDependencyMacro)
-find_dependency(durchblick 0.4)
-find_dependency(RC_GENICAM_API 2.6)
-include("${CMAKE_CURRENT_LIST_DIR}/durchblick_rcTargets.cmake")
-check_required_components(durchblick_rc)

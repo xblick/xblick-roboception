@@ -1,0 +1,18 @@
+# Versions
+
+*The node's [overview](README.md). Versions before 0.3.0 are described in the git history only.*
+
+* **0.3.0** Builds against Durchblick 0.5, in which every name in code, on the wire and on disk is `xblick`. The node
+  takes the same names; only the prose name of the project stays Durchblick. It works only with programs of
+  Durchblick 0.5. Stream names, frame ids, options and parameters are unchanged.
+
+  | What | 0.2.0 | 0.3.0 |
+  | --- | --- | --- |
+  | Repository | `github.com/xblick/durchblick-roboception` | `github.com/xblick/xblick-roboception` |
+  | Program | `durchblick-roboception` | `xblick-roboception` |
+  | CMake project | `durchblick_roboception` | `xblick_roboception` |
+  | CMake package, library, target | `durchblick_rc`, `durchblick_rc::durchblick_rc` | `xblick_rc`, `xblick_rc::xblick_rc` |
+  | Installed paths | `include/durchblick_rc`, `lib/cmake/durchblick_rc` | `include/xblick_rc`, `lib/cmake/xblick_rc` |
+  | Core package | `find_package(durchblick 0.4)`, `durchblick::durchblick`, `"durchblick/<header>.hpp"` | `find_package(xblick 0.5)`, `xblick::xblick`, `"xblick/<header>.hpp"` |
+  | C++ namespace | `durchblick::rc_node` | `xblick::rc_node` |
+  | Point cloud node in the test | `durchblick-points` | `xblick-points` |

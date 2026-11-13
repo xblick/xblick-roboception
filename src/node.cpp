@@ -4,10 +4,10 @@
 #include <cstdio>
 #include <vector>
 
-#include "durchblick/camera.hpp"
-#include "durchblick/image.hpp"
+#include "xblick/camera.hpp"
+#include "xblick/image.hpp"
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     namespace
     {
@@ -209,4 +209,4 @@ namespace durchblick::rc_node
                       images ? (now.age_ms - before.age_ms) / double(images) : 0.0);
         return text;
     }
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node

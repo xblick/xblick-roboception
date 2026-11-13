@@ -1,6 +1,6 @@
-# Options of durchblick-roboception
+# Options of xblick-roboception
 
-This page lists every command-line option, as `--help` does (Durchblick's `durchblick::Options`). The header comment
+This page lists every command-line option, as `--help` does (Durchblick's `xblick::Options`). The header comment
 of `src/main.cpp` is the source of this page. The program stops with an error at an unknown option.
 
 | Option | Default | Effect |
@@ -32,8 +32,8 @@ depth quality `Full` without its licence.
 
 ## Parameters
 
-Every option is also a parameter of the node `<base>`. Durchblick's terminal interface (`blick`, tab Parameters) and
-`blick param` show them. `--param NAME:=VALUE` or `--params-file FILE` set them at the start.
+Every option is also a parameter of the node `<base>`. Durchblick's terminal interface (`xblick`, tab Parameters) and
+`xblick param` show them. `--param NAME:=VALUE` or `--params-file FILE` set them at the start.
 
 The settings of exposure, gain and white balance change while the camera streams. Their ranges are the camera's,
 read when it opens, and their descriptions name them. Their values are the camera's: with the automatic exposure,
@@ -47,5 +47,5 @@ read when it opens, and their descriptions name them. Their values are the camer
 | `white_balance_red`, `white_balance_blue` | `--white-balance` | Sets a ratio and switches `auto_white_balance` off. Colour only. |
 | `auto_white_balance` | `--auto-white-balance` | The camera sets the white balance. Colour only. |
 
-For example, a brighter image: `blick param --node robot/rc_visard --set exposure_ms:=18`. The other options are
+For example, a brighter image: `xblick param --node robot/rc_visard --set exposure_ms:=18`. The other options are
 read-only and apply at the next start, because the camera takes them when it opens.

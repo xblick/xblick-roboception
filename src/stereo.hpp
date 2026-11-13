@@ -10,9 +10,9 @@
 #include <string>
 #include <vector>
 
-#include "durchblick/msg.hpp"
+#include "xblick/msg.hpp"
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     struct StereoParameters
     {
@@ -40,8 +40,8 @@ namespace durchblick::rc_node
 
     // The CameraInfo of an image of this size (left camera, or the right one: P[3] = -fx * baseline as in ROS's
     // stereo convention); plumb_bob without distortion, R = identity.
-    durchblick::CameraInfo camera_info(const StereoParameters& stereo, std::uint32_t width, std::uint32_t height,
-                                       const std::string& frame_id, bool right);
+    xblick::CameraInfo camera_info(const StereoParameters& stereo, std::uint32_t width, std::uint32_t height,
+                                   const std::string& frame_id, bool right);
 
     // Depth in millimetres (16UC1, as ROS's REP 118 and the Azure Kinect node; RVL keeps it lossless over the network)
     // of a disparity image: z = f t / d with f = FocalLengthFactor * width, rounded; 0 where the disparity is invalid
@@ -52,4 +52,4 @@ namespace durchblick::rc_node
     // what encoding() says. Throws for another format.
     std::string encoding(const RawImage& image);
     void to_pixels(const RawImage& image, std::uint8_t* out);
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node

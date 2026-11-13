@@ -17,7 +17,7 @@
 
 #include "stereo.hpp"
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     struct DeviceOptions
     {
@@ -105,4 +105,4 @@ namespace durchblick::rc_node
     // Releases the SDK's GenTL producers (rcg::System::clearSystems). Call it once at the end, after every source is
     // gone: without it the program crashes in the producers' static destructors at exit.
     void release_sdk();
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node

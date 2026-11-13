@@ -20,10 +20,10 @@
 
 #include <zenoh.hxx>
 
-#include "durchblick/msg.hpp"
+#include "xblick/msg.hpp"
 #include "source.hpp"
 
-namespace durchblick::rc_node
+namespace xblick::rc_node
 {
     struct NodeOptions
     {
@@ -70,4 +70,4 @@ namespace durchblick::rc_node
     // taken `seconds` apart
     std::string describe(const NodeStats& now, const NodeStats& before, std::uint64_t dropped, std::uint64_t restarts,
                          double seconds);
-}  // namespace durchblick::rc_node
+}  // namespace xblick::rc_node
