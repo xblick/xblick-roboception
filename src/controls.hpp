@@ -15,6 +15,6 @@ namespace xblick::rc_node
     // Call Parameters::apply_all after it (and check_overrides).
     void declare_settings(Parameters& parameters, FrameSource& source, const DeviceOptions& start);
 
-    // The node's name and namespace of a base <namespace>/<camera>: /robot/rc_visard -> ("rc_visard", "robot").
+    // The node's name and namespace of a base <namespace>/<camera>: /cam/rc_visard -> ("rc_visard", "cam").
     std::pair<std::string, std::string> node_name(const std::string& base);
 }  // namespace xblick::rc_node

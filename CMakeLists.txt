@@ -6,7 +6,7 @@
 # Targets: xblick-roboception (the camera node), test_rc_offline (no camera needed; ctest). Installs the library as
 # the CMake package xblick_rc (xblick_rc::xblick_rc), for programs that build on the node.
 cmake_minimum_required(VERSION 3.22)
-project(xblick_roboception VERSION 0.3.0 LANGUAGES CXX)
+project(xblick_roboception VERSION 0.3.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

@@ -2,6 +2,12 @@
 
 *The node's [overview](README.md). Versions before 0.3.0 are described in the git history only.*
 
+* **0.3.1** The default base name is `cam/rc_visard`, no longer `robot/rc_visard`, so that the default fits any
+  camera PC and follows the core's scheme `cam/<device>/<stream>`. All topics move with it: `cam/rc_visard/left`,
+  `cam/rc_visard/right`, `cam/rc_visard/depth`, `cam/rc_visard/tf_static`, `cam/rc_visard/diagnostics`, and the
+  node `/cam/rc_visard` with its parameters. A script that subscribes to `robot/rc_visard/...` needs the new names, or
+  the node started with the old name: `xblick-roboception --device <id> --base robot/rc_visard`.
+
 * **0.3.0** Builds against Durchblick 0.5, in which every name in code, on the wire and on disk is `xblick`. The node
   takes the same names; only the prose name of the project stays Durchblick. It works only with programs of
   Durchblick 0.5. Stream names, frame ids, options and parameters are unchanged.

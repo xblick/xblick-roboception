@@ -405,7 +405,7 @@ namespace
     void test_settings()
     {
         SettingsSource source;
-        Parameters parameters(nullptr, "rc_visard", "robot");
+        Parameters parameters(nullptr, "rc_visard", "cam");
         parameters.add_override("gain_db:=6.0");
         DeviceOptions start;  // exposure 12 ms, gain 0, white balance 1.2 2.4, both automatics off
         declare_settings(parameters, source, start);
@@ -426,7 +426,7 @@ namespace
                "the range in the description");
         DeviceOptions mono;
         mono.color = false;
-        Parameters grey(nullptr, "rc_visard", "robot");
+        Parameters grey(nullptr, "rc_visard", "cam");
         declare_settings(grey, source, mono);
         expect(not grey.has("white_balance_red"), "no white balance in Mono8");
     }

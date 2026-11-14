@@ -1,10 +1,10 @@
 # AGENTS.md
 
-Roboception rc_visard stereo camera as Durchblick streams below `<base>` (default `robot/rc_visard`): rectified
+Roboception rc_visard stereo camera as Durchblick streams below `<base>` (default `cam/rc_visard`): rectified
 `left` and `right`, `depth` (16UC1 mm, from the camera's disparity), `tf_static`, `diagnostics`. C++20, plain CMake
 project: program `xblick-roboception`, library `xblick_rc` (installed as CMake package, for programs
 that build on the node). Same structure as xblick-azure-kinect.
-Version 0.3.0, tested without a camera only. Human documentation: `README.md`, then `docs/` (streams, options,
+Version 0.3.1, tested without a camera only. Human documentation: `README.md`, then `docs/` (streams, options,
 design, build, hardware-checks). Transport-wide traps (Zenoh sessions and routers, CUDA rings, hanging
 tests): `AGENTS.md` of the core repository (github.com/xblick/xblick). Style of all documentation: the core's
 `docs/project/writing-docs.md`.
@@ -72,7 +72,7 @@ Durations: not recorded. Give `ctest` a timeout.
 
 ## Defaults
 
-- Base `robot/rc_visard`. Topics: `left`, `right`, `depth`, `tf_static`, `diagnostics`. `points` comes from
+- Base `cam/rc_visard`. Topics: `left`, `right`, `depth`, `tf_static`, `diagnostics`. `points` comes from
   `xblick-points --depth <base>/depth --color <base>/left`.
 - Exposure 12 ms, gain 0 dB, white balance red 1.2 and blue 2.4, colour, depth quality High, 25 fps, PTP on.
 - Frames `Roboception_LeftCamera`, `Roboception_RightCamera`. `source` `robot`. `--cuda-device` unset.

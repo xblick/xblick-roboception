@@ -4,7 +4,7 @@ This page describes the streams of the node, their camera models and their stamp
 
 ## The streams
 
-`<base>` is the base name of the node. Its default is `robot/rc_visard`. The node produces every representation
+`<base>` is the base name of the node. Its default is `cam/rc_visard`. The node produces every representation
 only while a subscriber asks for it.
 
 | Topic | Encoding | Content |
@@ -84,7 +84,7 @@ This node computes no point clouds. Durchblick's point cloud node `xblick-points
 colour from `left`.
 
 ```bash
-xblick-points --depth robot/rc_visard/depth --color robot/rc_visard/left
+xblick-points --depth cam/rc_visard/depth --color cam/rc_visard/left
 ```
 
 The cloud is a `sensor_msgs/PointCloud2` in metres, organized like the depth image. Durchblick's

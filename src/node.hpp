@@ -1,4 +1,4 @@
-// A Roboception rc_visard's images as Durchblick streams below one base name (e.g. robot/rc_visard):
+// A Roboception rc_visard's images as Durchblick streams below one base name (e.g. cam/rc_visard):
 //
 //   <base>/left         rgb8 (or mono8), the rectified left image
 //   <base>/right        the rectified right image (with IntensityCombined)
@@ -27,7 +27,7 @@ namespace xblick::rc_node
 {
     struct NodeOptions
     {
-        std::string base = "robot/rc_visard";
+        std::string base = "cam/rc_visard";
         std::string source = "robot";  // in every frame's attachment
         std::string left_frame_id = "Roboception_LeftCamera";
         std::string right_frame_id = "Roboception_RightCamera";

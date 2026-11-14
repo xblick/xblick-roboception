@@ -10,7 +10,7 @@ The node produces each representation of a stream only while a subscriber asks f
 
 ## What it publishes
 
-The node publishes below one base name. The default base is `robot/rc_visard`.
+The node publishes below one base name. The default base is `cam/rc_visard`.
 
 | Topic | Type | Content |
 | --- | --- | --- |
@@ -62,11 +62,11 @@ xblick-roboception --device <device id>
 Other programs read the streams of the node.
 
 ```bash
-# coloured point clouds on robot/rc_visard/points, with Durchblick's point cloud node
-xblick-points --depth robot/rc_visard/depth --color robot/rc_visard/left
+# coloured point clouds on cam/rc_visard/points, with Durchblick's point cloud node
+xblick-points --depth cam/rc_visard/depth --color cam/rc_visard/left
 # a viewer on another host
-xblick rerun robot/rc_visard/left robot/rc_visard/right robot/rc_visard/depth \
-  --points robot/rc_visard/points --spawn --connect <camera host>
+xblick rerun cam/rc_visard/left cam/rc_visard/right cam/rc_visard/depth \
+  --points cam/rc_visard/points --spawn --connect <camera host>
 ```
 
 Most users change these options:
@@ -74,7 +74,7 @@ Most users change these options:
 | Option | Default | Effect |
 | --- | --- | --- |
 | `--device ID` | required | The GenICam ID, the serial number or the name of the camera. |
-| `--base NAME` | `robot/rc_visard` | The base name of all topics. |
+| `--base NAME` | `cam/rc_visard` | The base name of all topics. |
 | `--fps N` | `25` | The frame rate. |
 | `--depth-quality Low\|Medium\|High\|Full` | `High` | The resolution of the depth image. |
 | `--exposure-ms MS`, `--auto-exposure` | 12 ms | The exposure. |

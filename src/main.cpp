@@ -1,6 +1,6 @@
 // xblick-roboception: a Roboception rc_visard as Durchblick streams (node.hpp).
 //
-//   xblick-roboception --device <id> [--base robot/rc_visard] [--fps 25]
+//   xblick-roboception --device <id> [--base cam/rc_visard] [--fps 25]
 //                          [--mono] [--no-right] [--no-depth] [--depth-quality Low|Medium|High|Full]
 //                          [--auto-exposure | --exposure-ms 12] [--gain-db 0]
 //                          [--auto-white-balance | --white-balance 1.2 2.4] [--no-ptp] [--sync-clock]

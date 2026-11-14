@@ -7,7 +7,7 @@ of `src/main.cpp` is the source of this page. The program stops with an error at
 | --- | --- | --- |
 | `--list` | | Print the devices that the SDK sees, then exit. |
 | `--device ID` | required | The GenICam ID, the serial number or the name of the camera. For an unknown device the node lists the devices that the SDK sees. |
-| `--base NAME` | `robot/rc_visard` | The base name of all topics. |
+| `--base NAME` | `cam/rc_visard` | The base name of all topics. |
 | `--fps N` | `25` | The frame rate, 1 to 25 Hz (the rc_visard's range). |
 | `--mono` | off, colour | Publish `mono8` images. |
 | `--no-right` | off | Do not offer the right image. |
@@ -47,5 +47,5 @@ read when it opens, and their descriptions name them. Their values are the camer
 | `white_balance_red`, `white_balance_blue` | `--white-balance` | Sets a ratio and switches `auto_white_balance` off. Colour only. |
 | `auto_white_balance` | `--auto-white-balance` | The camera sets the white balance. Colour only. |
 
-For example, a brighter image: `xblick param --node robot/rc_visard --set exposure_ms:=18`. The other options are
+For example, a brighter image: `xblick param --node cam/rc_visard --set exposure_ms:=18`. The other options are
 read-only and apply at the next start, because the camera takes them when it opens.
