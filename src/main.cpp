@@ -5,7 +5,7 @@
 //                          [--auto-exposure | --exposure-ms 12] [--gain-db 0]
 //                          [--auto-white-balance | --white-balance 1.2 2.4] [--no-ptp] [--sync-clock]
 //                          [--left-frame-id Roboception_LeftCamera] [--right-frame-id Roboception_RightCamera]
-//                          [--cuda-device 0] [--source robot] [--status-period 5]
+//                          [--cuda-device 0] [--source cam] [--status-period 5]
 //   xblick-roboception --list   (the devices the SDK sees)
 //
 // Zenoh: the PC's router (127.0.0.1:7447), or --listen/--connect ENDPOINT..., or --zenoh-config FILE

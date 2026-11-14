@@ -75,7 +75,7 @@ Durations: not recorded. Give `ctest` a timeout.
 - Base `cam/rc_visard`. Topics: `left`, `right`, `depth`, `tf_static`, `diagnostics`. `points` comes from
   `xblick-points --depth <base>/depth --color <base>/left`.
 - Exposure 12 ms, gain 0 dB, white balance red 1.2 and blue 2.4, colour, depth quality High, 25 fps, PTP on.
-- Frames `Roboception_LeftCamera`, `Roboception_RightCamera`. `source` `robot`. `--cuda-device` unset.
+- Frames `Roboception_LeftCamera`, `Roboception_RightCamera`. `source` `cam`. `--cuda-device` unset.
 - Zenoh: the PC's router at 127.0.0.1:7447, or `--connect`, `--listen`, `--zenoh-config`.
 - Standalone: `zenohd`, `xblick-roboception --device <id> [--depth-quality High] [--fps 25]`, look with
   `xblick rerun ... --spawn`.

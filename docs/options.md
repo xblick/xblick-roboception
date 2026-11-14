@@ -23,7 +23,7 @@ of `src/main.cpp` is the source of this page. The program stops with an error at
 | `--left-frame-id NAME` | `Roboception_LeftCamera` | The frame of `left` and `depth`. |
 | `--right-frame-id NAME` | `Roboception_RightCamera` | The frame of `right`. |
 | `--cuda-device N` | none | Also offer CUDA rings on this GPU, for readers on the GPU. |
-| `--source NAME` | `robot` | The `source` field in the attachment of every frame. |
+| `--source NAME` | `cam` | The `source` field in the attachment of every frame. |
 | `--status-period SECONDS` | `5` | The period of the status line on the terminal. |
 | `--connect ENDPOINT...`, `--listen ENDPOINT...`, `--zenoh-config FILE` | the router at `127.0.0.1:7447` | The Zenoh session. |
 

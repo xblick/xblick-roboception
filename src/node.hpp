@@ -28,7 +28,7 @@ namespace xblick::rc_node
     struct NodeOptions
     {
         std::string base = "cam/rc_visard";
-        std::string source = "robot";  // in every frame's attachment
+        std::string source = "cam";    // in every frame's attachment
         std::string left_frame_id = "Roboception_LeftCamera";
         std::string right_frame_id = "Roboception_RightCamera";
         std::optional<int> cuda_device;  // also offer CUDA rings on this device
