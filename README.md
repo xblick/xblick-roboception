@@ -1,5 +1,7 @@
 # xblick-roboception
 
+[![xblick core](https://img.shields.io/pypi/v/xblick?label=xblick%20core&color=blue)](https://github.com/xblick/xblick)
+
 `xblick-roboception` publishes the rectified left and right images of a Roboception rc_visard stereo camera as
 [Durchblick](https://github.com/xblick/xblick) streams, at 25 frames per second by default. It
 also publishes a depth image, which it computes from the disparity image of the camera.
