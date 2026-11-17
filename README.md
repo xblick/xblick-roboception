@@ -31,7 +31,7 @@ models and the stamps.
 
 | Need | For |
 | --- | --- |
-| Durchblick 0.5, C++ package | everything |
+| Durchblick from its branch `ros2` (commit `93c618d`, not released), C++ package | everything |
 | The CUDA toolkit that Durchblick's package was built with | Durchblick's CMake package |
 | Roboception's `rc_genicam_api` 2.6 or newer (tested: 2.8.9) | the camera |
 | `GENICAM_GENTL64_PATH` set to the SDK's GenTL producer | finding a device |
@@ -88,6 +88,44 @@ node `<base>`, which Durchblick's terminal interface (`xblick`, tab Parameters) 
 `--params-file FILE` set them at the start. Exposure, gain and white balance change while the node runs, within the
 camera's ranges. The others apply at the next start. [docs/options.md](docs/options.md) lists every option and
 parameter.
+
+## ROS 2
+
+The branch `ros2` of this repository builds on the core's branch `ros2`, which is not released. Build that core at
+commit `93c618d` ([docs/build.md](docs/build.md)). The core adds the option `--ros`: the node then also takes part in
+ROS 2 on `rmw_zenoh` (ROS 2 Jazzy), and its own topics stay as they are. Without `--ros` nothing changes.
+
+```bash
+xblick-roboception --device <device id> --ros
+```
+
+| ROS 2 topic | ROS type |
+| --- | --- |
+| `/<base>/left/image_raw`, `/<base>/right/image_raw`, `/<base>/depth/image_raw` | `sensor_msgs/msg/Image` |
+| `/<base>/<stream>/camera_info` for the same streams, with the header of each image | `sensor_msgs/msg/CameraInfo` |
+| `/<base>/left/image_raw/compressed`, `/<base>/right/image_raw/compressed` | `sensor_msgs/msg/CompressedImage` (JPEG) |
+| `/tf_static`, transient local | `tf2_msgs/msg/TFMessage` |
+| `/<base>/diagnostics` | `diagnostic_msgs/msg/DiagnosticArray` |
+
+ROS does not get the RVL form of the depth (`depth/image_raw/compressed`), which has no ROS format, nor the rings in
+shared memory and on the GPU. ROS gets the depth's `image_raw`.
+
+The node sends a topic to ROS only while a ROS subscriber reads it. `camera_info` goes out with the images: a ROS
+subscriber that reads only `camera_info` gets nothing until something takes the stream's images. The transform on
+`/tf_static` goes out once and stays in the publisher's cache for ROS subscribers that start later. The program is
+the ROS node `/xblick_roboception` (`--ros-node`), and its parameters are the ROS node `/<base>`. ROS clients read the
+parameters and may set them only when the node was started with `--ros-params-writable`.
+
+Each part of `--base` has to be a ROS name: letters, digits and `_`, not starting with a digit. The node checks this
+at its start with or without `--ros`. Every default topic is such a name.
+
+The node needs a camera, so the test `ros` checks the streams on the node itself, with synthetic images and a
+session that takes part in ROS 2 as the program's does with `--ros`. It reads the topics above through Durchblick's
+ROS reader, checks ROS's attachment and tokens, and checks that without ROS nothing of ROS is on the wire. Of the
+program it checks that `--ros` makes it the ROS node `/xblick_roboception`. Nothing was tested with a camera or with
+ROS 2's own programs.
+[Durchblick and ROS 2](https://github.com/xblick/xblick/blob/ros2/docs/integrations/ros2.md) describes the option,
+the other `--ros-*` options and ROS 2's tools.
 
 ## Limits
 

@@ -6,11 +6,28 @@ This page lists the dependencies, the build commands and what the test checks.
 
 | Dependency | Version | Note |
 | --- | --- | --- |
-| Durchblick's C++ package | 0.5 (`find_package(xblick 0.5)`) | Its CMake package needs the CUDA toolkit that it was built with. |
+| Durchblick's C++ package | branch `ros2`, commit `93c618d` (not released, [below](#durchblick-from-its-branch-ros2)) | Its CMake package needs the CUDA toolkit that it was built with. |
 | Roboception's `rc_genicam_api` | 2.6 or newer, tested with 2.8.9 | Set `RC_GENICAM_API_DIR` to `<SDK>/lib/rc_genicam_api`. |
 | zenoh-c and zenoh-cpp | as Durchblick | |
 
 The SDK builds with the system's g++ 14. We tested this with version 2.8.9.
+
+### Durchblick from its branch ros2
+
+The branch `ros2` of this repository needs the core's branch `ros2` at commit `93c618d`. That commit is not
+released. Build its C++ package from the archive of the commit, as the setup script of `xblick-azure-kinect` does:
+
+```bash
+curl -fLO https://github.com/xblick/xblick/archive/93c618d5e59b6c80ee0795028e7dda4b588c89b5.tar.gz
+echo "444c3c695b9b9bf3efa28a6e6e348e1f4e76634638fb4a6ba278d8e8581b06c1  93c618d5e59b6c80ee0795028e7dda4b588c89b5.tar.gz" | sha256sum --check
+tar -xzf 93c618d5e59b6c80ee0795028e7dda4b588c89b5.tar.gz
+cmake -S xblick-93c618d5e59b6c80ee0795028e7dda4b588c89b5 -B xblick-build -G Ninja -DCMAKE_PREFIX_PATH=<zenoh> \
+  -DCMAKE_INSTALL_PREFIX=<xblick> -DBUILD_TESTING=OFF -DXBLICK_POINTS=ON -DCUDAToolkit_ROOT=<CUDA toolkit> \
+  -DCMAKE_CUDA_COMPILER=<CUDA toolkit>/bin/nvcc -DXBLICK_CUDA_INCLUDE_DIR=<CUDA toolkit>/include
+cmake --build xblick-build && cmake --install xblick-build
+```
+
+The build of this node stops when the core has no `xblick/ros.hpp`.
 
 ## Build
 
@@ -50,3 +67,11 @@ needs a GPU.
 
 We also started `xblick-roboception --list` without a camera. The SDK sees no device, and the node stops with
 "device ... not found".
+
+The test `ros` needs no camera either. The node needs one, so the test checks the streams on the node itself, fed
+with synthetic images, with a session that takes part in ROS 2 as the program's does with `--ros`. Durchblick's ROS
+reader receives left, right and depth with their `camera_info`, `/tf_static` and the diagnostics. Every ROS key
+carries ROS's attachment, the publishers' tokens belong to the node `/xblick_roboception`, and the RVL depth does not
+go to ROS. Without ROS no key or token of ROS is on the wire. The test also starts the program without a device:
+with `--ros` its session becomes the ROS node `/xblick_roboception` before it stops, and a ROS option without `--ros`
+stops it with the reason. Tested on 2026-11-17 with the core at `93c618d`.

@@ -20,6 +20,11 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)
 # Durchblick's 0.5 line (its CMake package accepts its own minor version only): CameraInfo, StaticTransformPublisher,
 # DiagnosticsPublisher, RVL for depth, ring keys with the host; the point cloud node for the tests
 find_package(xblick 0.5 REQUIRED OPTIONAL_COMPONENTS points)
+# branch ros2: Durchblick's branch ros2 (ROS 2 on rmw_zenoh, xblick/ros.hpp, not released; docs/build.md)
+if(NOT EXISTS "${xblick_DIR}/../../../include/xblick/ros.hpp")
+  message(FATAL_ERROR "branch ros2 needs Durchblick from its branch ros2 (xblick/ros.hpp, docs/build.md); found "
+                      "Durchblick ${xblick_VERSION} without it")
+endif()
 # Roboception's GenICam SDK (RC_GENICAM_API_DIR=<SDK>/lib/rc_genicam_api)
 find_package(RC_GENICAM_API 2.6 REQUIRED)
 # its GenICam libraries (libGCBase_..., beside librc_genicam_api) are needed by librc_genicam_api, which has no RPATH of
@@ -49,6 +54,13 @@ if(BUILD_TESTING)
     target_compile_definitions(test_rc_offline PRIVATE RC_POINTS_PROGRAM="${RC_POINTS_PROGRAM}")
   endif()
   add_test(NAME offline COMMAND test_rc_offline)
+  # --ros: the node's streams as ROS 2 sees them (synthetic grabs, no camera), the program's ROS options
+  add_executable(test_rc_ros tests/test_ros.cpp)
+  target_link_libraries(test_rc_ros PRIVATE xblick_rc)
+  target_compile_definitions(test_rc_ros PRIVATE RC_PROGRAM="$<TARGET_FILE:xblick-roboception>"
+                             RC_TEST_TMP="${CMAKE_CURRENT_BINARY_DIR}")
+  add_dependencies(test_rc_ros xblick-roboception)
+  add_test(NAME ros COMMAND test_rc_ros)
 endif()
 
 install(TARGETS xblick-roboception RUNTIME DESTINATION bin)

@@ -26,6 +26,10 @@ of `src/main.cpp` is the source of this page. The program stops with an error at
 | `--source NAME` | `cam` | The `source` field in the attachment of every frame. |
 | `--status-period SECONDS` | `5` | The period of the status line on the terminal. |
 | `--connect ENDPOINT...`, `--listen ENDPOINT...`, `--zenoh-config FILE` | the router at `127.0.0.1:7447` | The Zenoh session. |
+| `--ros` | off | Also take part in ROS 2 on `rmw_zenoh` (the core's branch `ros2`, [README](../README.md#ros-2)). |
+| `--ros-domain ID` | `ROS_DOMAIN_ID`, else 0 | The ROS domain id. Needs `--ros`. |
+| `--ros-node NAME` | `xblick_roboception` | The program's ROS node name. Needs `--ros`. |
+| `--ros-params-writable` | off | ROS clients may set the parameters. Without it they only read them. Needs `--ros`. |
 
 The node stops at its start when the camera refuses a setting. Examples are colour on a monochrome camera and the
 depth quality `Full` without its licence.

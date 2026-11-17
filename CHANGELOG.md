@@ -2,6 +2,27 @@
 
 *The node's [overview](README.md). Versions before 0.3.0 are described in the git history only.*
 
+## Branch ros2 (not released)
+
+The node with the core's option `--ros` (ROS 2 on `rmw_zenoh`).
+
+### Changed
+
+- The node builds on the core's unreleased branch `ros2` at commit `93c618d` (docs/build.md: the archive of the
+  commit with its sha256, and its build). The build stops when the core has no `xblick/ros.hpp`.
+
+### Added
+
+- `--ros`, `--ros-domain`, `--ros-node` and `--ros-params-writable` from the core. With `--ros` left, right and depth
+  with their `camera_info`, the JPEG forms of left and right, `/tf_static` and the diagnostics also go to ROS 2, and
+  the parameters are a ROS node. README: section "ROS 2".
+- The test `ros` (`tests/test_ros.cpp`): the node's streams through the core's ROS reader, with ROS's attachment and
+  tokens, on synthetic images; without ROS nothing of ROS on the wire; the program's ROS options without a device.
+
+Compatible with earlier clients: nothing on our keys changed.
+
+## Released versions
+
 * **0.3.1** Two defaults change: the base name and the `source` label.
 
   The default base name is `cam/rc_visard`, no longer `robot/rc_visard`, so that the default fits any

@@ -24,9 +24,10 @@ tools/check_references.sh                        # the reference check of the CI
 
 Durations: not recorded. Give `ctest` a timeout.
 
-- Needs Durchblick 0.5 (`find_package(xblick 0.5)`; its CMake package needs the CUDA toolkit it was built
-  with) and `rc_genicam_api` >= 2.6 (tested 2.8.9).
+- Branch ros2: needs Durchblick from its branch ros2 at 93c618d (docs/build.md; its CMake package needs the CUDA
+  toolkit it was built with) and `rc_genicam_api` >= 2.6 (tested 2.8.9).
 - Test `offline`: no camera. The point cloud part runs only when Durchblick has its point cloud node, and needs a GPU.
+- Test `ros`: no camera, no ROS installation; the node with a ROS session, and the program's ROS options.
 
 ## Rules
 
