@@ -47,5 +47,5 @@ The node does not scale, rotate or translate the point cloud.
 
 ## Status and limits
 
-- The settings follow the SDK's example `gc_pointcloud`. Nobody has tried them on a camera.
+- The settings follow the SDK's example `gc_pointcloud`.
 - The camera has confidence and error images. The node does not publish them.

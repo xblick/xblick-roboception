@@ -7,10 +7,10 @@ This page lists the dependencies, the build commands and what the test checks.
 | Dependency | Version | Note |
 | --- | --- | --- |
 | Durchblick's C++ package | 0.5 (`find_package(xblick 0.5)`) | Its CMake package needs the CUDA toolkit that it was built with. |
-| Roboception's `rc_genicam_api` | 2.6 or newer, tested with 2.8.9 | Set `RC_GENICAM_API_DIR` to `<SDK>/lib/rc_genicam_api`. |
+| Roboception's `rc_genicam_api` | 2.6 or newer | Set `RC_GENICAM_API_DIR` to `<SDK>/lib/rc_genicam_api`. |
 | zenoh-c and zenoh-cpp | as Durchblick | |
 
-The SDK builds with the system's g++ 14. We tested this with version 2.8.9.
+The SDK builds with the system's g++ 14.
 
 ## Build
 
@@ -32,8 +32,7 @@ The programs get the SDK's library directory as `DT_RPATH`. They therefore find 
 
 ## Tests
 
-The test `offline` needs no camera. It checks the following, as tested on 2026-10-28 with rc_genicam_api 2.8.9,
-Durchblick 0.3.1 and an RTX PRO 6000.
+The test `offline` needs no camera. It checks the following.
 
 | Part | Check |
 | --- | --- |

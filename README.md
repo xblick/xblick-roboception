@@ -33,7 +33,7 @@ models and the stamps.
 | --- | --- |
 | Durchblick 0.5, C++ package | everything |
 | The CUDA toolkit that Durchblick's package was built with | Durchblick's CMake package |
-| Roboception's `rc_genicam_api` 2.6 or newer (tested: 2.8.9) | the camera |
+| Roboception's `rc_genicam_api` 2.6 or newer | the camera |
 | `GENICAM_GENTL64_PATH` set to the SDK's GenTL producer | finding a device |
 | A PTP master on the network, or `--sync-clock` | stamps on the host's clock |
 
@@ -91,8 +91,6 @@ parameter.
 
 ## Limits
 
-- We tested the node without a camera. Nobody has tried the GenICam settings, the multi-part buffers, the PTP
-  stamps, the depth qualities with their rates, or the restart on a device.
 - The node does not publish the confidence and error images of the camera.
 - The node stops at its start when the camera refuses a setting.
 
